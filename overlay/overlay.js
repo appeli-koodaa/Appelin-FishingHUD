@@ -1,146 +1,105 @@
-<!DOCTYPE html>
-<html lang="fi">
+// ==========================================================
+// APPELIN FISHINGHUD
+// OVERLAY.JS
+// ==========================================================
 
-<head>
+import { db, ref, onValue } from "../shared/firebase.js";
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Appelin FishingHUD</title>
+// ==========================================================
+// KELLO
+// ==========================================================
 
-    <link rel="stylesheet" href="overlay.css">
+function updateClock() {
 
-</head>
+    const now = new Date();
 
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
 
-<body>
+    document.getElementById("clock").textContent =
+        `${hours}:${minutes}`;
 
-<header class="hud">
+}
 
+updateClock();
 
-    <!-- Sijainti -->
+setInterval(updateClock, 1000);
 
-    <div class="hud-item">
 
-        <span class="icon">📍</span>
+// ==========================================================
+// KALAT
+// ==========================================================
 
-        <span id="location">
-            Lieto
-        </span>
+onValue(ref(db, "fish"), (snapshot) => {
 
-    </div>
+    const fish = snapshot.val();
 
+    if (!fish) return;
 
 
-    <!-- Sää -->
+    document.getElementById("pike").textContent =
+        fish.pike ?? 0;
 
-    <div class="hud-item">
+    document.getElementById("zander").textContent =
+        fish.zander ?? 0;
 
-        <span class="icon">🌤️</span>
+    document.getElementById("perch").textContent =
+        fish.perch ?? 0;
 
-        <span id="weather">
-            --°C
-        </span>
+});
 
-    </div>
 
+// ==========================================================
+// SÄÄ
+// ==========================================================
 
+onValue(ref(db, "weather"), (snapshot) => {
 
-    <!-- Twitch katsojat -->
+    const weather = snapshot.val();
 
-    <div class="hud-item">
+    if (!weather) return;
 
-        <span class="icon">👥</span>
 
-        <span id="viewers">
-            0
-        </span>
+    document.getElementById("weather").textContent =
+        `${weather.temperature}°C`;
 
-    </div>
+});
 
 
+// ==========================================================
+// SIJAINTI
+// ==========================================================
 
-    <!-- Kello -->
+onValue(ref(db, "location"), (snapshot) => {
 
-    <div class="hud-item">
+    const location = snapshot.val();
 
-        <span class="icon">🕒</span>
+    if (!location) return;
 
-        <span id="clock">
-            00:00
-        </span>
 
-    </div>
+    if (location.name) {
 
+        document.getElementById("location").textContent =
+            location.name;
 
+    }
 
-    <!-- Kalat -->
+});
 
-    <div class="hud-item">
 
+// ==========================================================
+// TWITCH KATSOJAT
+// ==========================================================
 
-        <span class="icon">🎣</span>
+onValue(ref(db, "viewers"), (snapshot) => {
 
+    const viewers = snapshot.val();
 
-        <span class="fish pike">
+    if (viewers === null) return;
 
-            Hauki
 
-            <span id="pike">
-                0
-            </span>
+    document.getElementById("viewers").textContent =
+        viewers;
 
-        </span>
-
-
-        <span class="divider">
-            │
-        </span>
-
-
-        <span class="fish zander">
-
-            Kuha
-
-            <span id="zander">
-                0
-            </span>
-
-        </span>
-
-
-        <span class="divider">
-            │
-        </span>
-
-
-        <span class="fish perch">
-
-            Ahven
-
-            <span id="perch">
-                0
-            </span>
-
-        </span>
-
-
-    </div>
-
-
-
-    <!-- Status -->
-
-    <div class="status online"></div>
-
-
-</header>
-
-
-
-<script type="module" src="overlay.js"></script>
-
-
-</body>
-
-</html>
+});
