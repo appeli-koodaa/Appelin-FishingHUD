@@ -1,4 +1,10 @@
+// ==========================================================
+// APPELIN FISHINGHUD
+// OVERLAY.JS
+// ==========================================================
+
 import { db, ref, onValue } from "../shared/firebase.js";
+
 
 // ==========================================================
 // KELLO
@@ -11,39 +17,75 @@ function updateClock() {
     const hours = String(now.getHours()).padStart(2, "0");
     const minutes = String(now.getMinutes()).padStart(2, "0");
 
-    document.getElementById("clock").textContent = `${hours}:${minutes}`;
+    document.getElementById("clock").textContent =
+        `${hours}:${minutes}`;
 
 }
 
 updateClock();
+
 setInterval(updateClock, 1000);
+
 
 // ==========================================================
 // KALAT
 // ==========================================================
 
-onValue(ref(db, "fish"), (snapshot) => {
+const fishRef = ref(db, "fish");
 
-    if (!snapshot.exists()) return;
+onValue(fishRef, (snapshot) => {
 
     const fish = snapshot.val();
 
-    document.getElementById("pike").textContent = fish.pike ?? 0;
-    document.getElementById("zander").textContent = fish.zander ?? 0;
-    document.getElementById("perch").textContent = fish.perch ?? 0;
+    if (!fish) return;
+
+    document.getElementById("pike").textContent =
+        fish.pike ?? 0;
+
+    document.getElementById("zander").textContent =
+        fish.zander ?? 0;
+
+    document.getElementById("perch").textContent =
+        fish.perch ?? 0;
 
 });
+
+
+// ==========================================================
+// LÄMPÖTILA
+// ==========================================================
+
+const weatherRef = ref(db, "weather");
+
+onValue(weatherRef, (snapshot) => {
+
+    const weather = snapshot.val();
+
+    if (!weather) return;
+
+    document.getElementById("weather").textContent =
+        `${weather.temperature}°C`;
+
+});
+
 
 // ==========================================================
 // SIJAINTI
 // ==========================================================
 
-onValue(ref(db, "location"), (snapshot) => {
+const locationRef = ref(db, "location");
 
-    if (!snapshot.exists()) return;
+onValue(locationRef, (snapshot) => {
 
     const location = snapshot.val();
 
-    document.getElementById("location").textContent = location.name ?? "-";
+    if (!location) return;
+
+    if (location.name) {
+
+        document.getElementById("location").textContent =
+            location.name;
+
+    }
 
 });
