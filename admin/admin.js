@@ -99,8 +99,18 @@ document.getElementById("loginButton").onclick = async () => {
         );
 
 
+
         document.getElementById("loginStatus").textContent =
             "Kirjautuminen onnistui";
+
+
+
+        // Tyhjennä kirjautumiskentät
+
+        document.getElementById("email").value = "";
+
+        document.getElementById("password").value = "";
+
 
 
     } catch (error) {
@@ -140,13 +150,11 @@ startGeocoding();
 
 let fish = {
 
-
     pike: 0,
 
     zander: 0,
 
     perch: 0
-
 
 };
 
@@ -389,13 +397,11 @@ document.getElementById("resetButton").onclick = async () => {
 
     fish = {
 
-
         pike: 0,
 
         zander: 0,
 
         perch: 0
-
 
     };
 
