@@ -27,29 +27,29 @@ body {
 
 .hud {
 
-    display: inline-flex;
+    display: flex;
+
+    width: fit-content;
+
+    max-width: 95vw;
 
     align-items: center;
 
-    gap: 10px;
-
-    max-width: calc(100vw - 20px);
+    gap: 5px;
 
     box-sizing: border-box;
 
-    overflow: hidden;
-
     background: rgba(5, 25, 55, 0.90);
 
-    padding: 10px 14px;
+    padding: 6px 10px;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
     border: 1px solid rgba(255,255,255,0.25);
 
     color: white;
 
-    font-size: 18px;
+    font-size: 14px;
 
     font-weight: 700;
 
@@ -73,7 +73,7 @@ body {
 
     align-items: center;
 
-    gap: 6px;
+    gap: 4px;
 
     white-space: nowrap;
 
@@ -90,7 +90,7 @@ body {
 
 .icon {
 
-    font-size: 20px;
+    font-size: 16px;
 
     filter:
         drop-shadow(2px 2px 2px black);
@@ -140,6 +140,7 @@ body {
 }
 
 
+
 .pike,
 .zander,
 .perch {
@@ -161,6 +162,8 @@ body {
 
     font-weight: bold;
 
+    margin: 0 2px;
+
 }
 
 
@@ -174,15 +177,15 @@ body {
 
     flex-shrink: 0;
 
-    width: 8px;
+    width: 7px;
 
-    height: 8px;
+    height: 7px;
 
     border-radius: 50%;
 
     background: #22c55e;
 
     box-shadow:
-        0 0 8px #22c55e;
+        0 0 6px #22c55e;
 
 }
