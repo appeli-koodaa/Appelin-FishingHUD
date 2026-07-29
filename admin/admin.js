@@ -6,16 +6,30 @@
 import { db, ref, set, onValue } from "../shared/firebase.js";
 import { startGps } from "../services/gps.js";
 import { startWeather } from "../services/weather.js";
+import { startGeocoding } from "../services/geocoding.js";
 
+
+// ==========================================================
 // Käynnistä palvelut
+// ==========================================================
+
 startGps();
 startWeather();
+startGeocoding();
+
+
+// ==========================================================
+// Kalat
+// ==========================================================
 
 let fish = {
+
     pike: 0,
     zander: 0,
     perch: 0
+
 };
+
 
 // ==========================================================
 // Päivitä näkymä
@@ -23,11 +37,17 @@ let fish = {
 
 function updateDisplay() {
 
-    document.getElementById("pikeCount").textContent = fish.pike;
-    document.getElementById("zanderCount").textContent = fish.zander;
-    document.getElementById("perchCount").textContent = fish.perch;
+    document.getElementById("pikeCount").textContent =
+        fish.pike;
+
+    document.getElementById("zanderCount").textContent =
+        fish.zander;
+
+    document.getElementById("perchCount").textContent =
+        fish.perch;
 
 }
+
 
 // ==========================================================
 // Firebase - Kalat
@@ -37,11 +57,13 @@ onValue(ref(db, "fish"), (snapshot) => {
 
     if (!snapshot.exists()) return;
 
+
     fish = snapshot.val();
 
     updateDisplay();
 
 });
+
 
 // ==========================================================
 // Tallenna kalat
@@ -49,12 +71,16 @@ onValue(ref(db, "fish"), (snapshot) => {
 
 async function saveFish() {
 
-    await set(ref(db, "fish"), fish);
+    await set(
+        ref(db, "fish"),
+        fish
+    );
 
 }
 
+
 // ==========================================================
-// Kevyt värinä
+// Värinä
 // ==========================================================
 
 function vibrate() {
@@ -66,6 +92,7 @@ function vibrate() {
     }
 
 }
+
 
 // ==========================================================
 // Hauki
@@ -81,9 +108,11 @@ document.getElementById("pikePlus").onclick = async () => {
 
 };
 
+
 document.getElementById("pikeMinus").onclick = async () => {
 
     if (fish.pike === 0) return;
+
 
     fish.pike--;
 
@@ -92,6 +121,7 @@ document.getElementById("pikeMinus").onclick = async () => {
     vibrate();
 
 };
+
 
 // ==========================================================
 // Kuha
@@ -107,9 +137,11 @@ document.getElementById("zanderPlus").onclick = async () => {
 
 };
 
+
 document.getElementById("zanderMinus").onclick = async () => {
 
     if (fish.zander === 0) return;
+
 
     fish.zander--;
 
@@ -118,6 +150,7 @@ document.getElementById("zanderMinus").onclick = async () => {
     vibrate();
 
 };
+
 
 // ==========================================================
 // Ahven
@@ -133,9 +166,11 @@ document.getElementById("perchPlus").onclick = async () => {
 
 };
 
+
 document.getElementById("perchMinus").onclick = async () => {
 
     if (fish.perch === 0) return;
+
 
     fish.perch--;
 
@@ -145,6 +180,7 @@ document.getElementById("perchMinus").onclick = async () => {
 
 };
 
+
 // ==========================================================
 // Reset
 // ==========================================================
@@ -153,11 +189,15 @@ document.getElementById("resetButton").onclick = async () => {
 
     if (!confirm("Haluatko varmasti nollata saaliin?")) return;
 
+
     fish = {
+
         pike: 0,
         zander: 0,
         perch: 0
+
     };
+
 
     await saveFish();
 
