@@ -24,17 +24,24 @@ body {
    PÄÄ HUD
 ========================================================== */
 
+
 .hud {
 
     display: inline-flex;
 
     align-items: center;
 
-    gap: 12px;
+    gap: 10px;
+
+    max-width: calc(100vw - 20px);
+
+    box-sizing: border-box;
+
+    overflow: hidden;
 
     background: rgba(5, 25, 55, 0.90);
 
-    padding: 8px 18px;
+    padding: 10px 14px;
 
     border-radius: 14px;
 
@@ -59,23 +66,31 @@ body {
    HUD OSAT
 ========================================================== */
 
+
 .hud-item {
 
     display: flex;
 
     align-items: center;
 
-    gap: 8px;
+    gap: 6px;
 
     white-space: nowrap;
+
+    flex-shrink: 1;
 
 }
 
 
 
+/* ==========================================================
+   IKONIT
+========================================================== */
+
+
 .icon {
 
-    font-size: 24px;
+    font-size: 20px;
 
     filter:
         drop-shadow(2px 2px 2px black);
@@ -87,6 +102,7 @@ body {
 /* ==========================================================
    TEKSTIT
 ========================================================== */
+
 
 #location,
 #weather,
@@ -111,6 +127,7 @@ body {
    KALAT
 ========================================================== */
 
+
 .fish {
 
     color: white;
@@ -121,7 +138,6 @@ body {
         2px 2px 4px black;
 
 }
-
 
 
 .pike,
@@ -138,6 +154,7 @@ body {
    ERITTIMET
 ========================================================== */
 
+
 .divider {
 
     color: white;
@@ -149,14 +166,17 @@ body {
 
 
 /* ==========================================================
-   ONLINE MERKKI
+   ONLINE PALLO
 ========================================================== */
+
 
 .status {
 
-    width: 12px;
+    flex-shrink: 0;
 
-    height: 12px;
+    width: 8px;
+
+    height: 8px;
 
     border-radius: 50%;
 
