@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appelin FishingHUD</title>
+
+    <link rel="stylesheet" href="overlay.css">
+</head>
+
+<body>
+
+    <header class="hud">
+
+        <div class="hud-item">
+            <span class="icon">📍</span>
+            <span id="location">Lieto</span>
+        </div>
+
+        <div class="hud-item">
+            <span class="icon">🌤️</span>
+            <span id="weather">21°C</span>
+        </div>
+
+        <div class="hud-item">
+            <span class="icon">👥</span>
+            <span id="viewers">0</span>
+        </div>
+
+        <div class="hud-item">
+            <span class="icon">🕒</span>
+            <span id="clock">00:00</span>
+        </div>
+
+        <div class="hud-item">
+
+            <span class="icon">🎣</span>
+
+            <span class="fish pike">
+                Hauki <span id="pike">0</span>
+            </span>
+
+            <span class="divider">│</span>
+
+            <span class="fish zander">
+                Kuha <span id="zander">0</span>
+            </span>
+
+            <span class="divider">│</span>
+
+            <span class="fish perch">
+                Ahven <span id="perch">0</span>
+            </span>
+
+        </div>
+
+        <div class="status online"></div>
+
+    </header>
+
+    <script type="module" src="overlay.js"></script>
+
+</body>
+
+</html>

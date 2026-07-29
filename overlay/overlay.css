@@ -1,0 +1,143 @@
+/* ==========================================================
+   APPELIN FISHING HUD
+   overlay.css
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: transparent;
+    padding: 20px;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #1f2937;
+}
+
+/* ==========================================================
+   HUD
+========================================================== */
+
+.hud {
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    width: fit-content;
+
+    padding: 14px 24px;
+
+    border-radius: 18px;
+
+    background: rgba(100,165,235,.72);
+
+    border: 1px solid rgba(55,110,190,.85);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+}
+
+/* ==========================================================
+   Jokainen tieto
+========================================================== */
+
+.hud-item {
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #203040;
+
+}
+
+.icon {
+
+    font-size: 22px;
+
+}
+
+/* ==========================================================
+   Kalat
+========================================================== */
+
+.fish {
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    font-weight: 700;
+
+}
+
+.pike {
+
+    color: #0f8b3d;
+
+}
+
+.zander {
+
+    color: #b8860b;
+
+}
+
+.perch {
+
+    color: #0d63d8;
+
+}
+
+/* ==========================================================
+   Erotin
+========================================================== */
+
+.divider {
+
+    color: rgba(0,0,0,.35);
+
+}
+
+/* ==========================================================
+   Status
+========================================================== */
+
+.status {
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    margin-left: 6px;
+
+}
+
+.online {
+
+    background: #22c55e;
+
+}
+
+/* ==========================================================
+   Hover
+========================================================== */
+
+.hud:hover {
+
+    box-shadow: 0 14px 30px rgba(0,0,0,.40);
+
+    transition: .2s;
+
+}
