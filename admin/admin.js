@@ -4,6 +4,12 @@
 // ==========================================================
 
 import { db, ref, set, onValue } from "../shared/firebase.js";
+import { startGps } from "../services/gps.js";
+import { startWeather } from "../services/weather.js";
+
+// Käynnistä palvelut
+startGps();
+startWeather();
 
 let fish = {
     pike: 0,
@@ -24,7 +30,7 @@ function updateDisplay() {
 }
 
 // ==========================================================
-// Kuuntele kaloja
+// Firebase - Kalat
 // ==========================================================
 
 onValue(ref(db, "fish"), (snapshot) => {
@@ -34,20 +40,6 @@ onValue(ref(db, "fish"), (snapshot) => {
     fish = snapshot.val();
 
     updateDisplay();
-
-});
-
-// ==========================================================
-// Kuuntele sijaintia
-// ==========================================================
-
-onValue(ref(db, "location"), (snapshot) => {
-
-    if (!snapshot.exists()) return;
-
-    const location = snapshot.val();
-
-    document.getElementById("locationInput").value = location.name ?? "";
 
 });
 
@@ -62,27 +54,15 @@ async function saveFish() {
 }
 
 // ==========================================================
-// Tallenna sijainti
-// ==========================================================
-
-async function saveLocation() {
-
-    const name = document.getElementById("locationInput").value.trim();
-
-    await set(ref(db, "location"), {
-        name
-    });
-
-}
-
-// ==========================================================
 // Kevyt värinä
 // ==========================================================
 
 function vibrate() {
 
     if (navigator.vibrate) {
+
         navigator.vibrate(20);
+
     }
 
 }
@@ -160,18 +140,6 @@ document.getElementById("perchMinus").onclick = async () => {
     fish.perch--;
 
     await saveFish();
-
-    vibrate();
-
-};
-
-// ==========================================================
-// Sijainti
-// ==========================================================
-
-document.getElementById("locationSave").onclick = async () => {
-
-    await saveLocation();
 
     vibrate();
 

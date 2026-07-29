@@ -73,27 +73,6 @@
 
         </div>
 
-        <!-- Sijainti -->
-
-        <div class="card location">
-
-            <h2>📍 Sijainti</h2>
-
-            <div class="location-controls">
-
-                <input
-                    type="text"
-                    id="locationInput"
-                    placeholder="Esim. Airisto">
-
-                <button id="locationSave">
-                    Tallenna
-                </button>
-
-            </div>
-
-        </div>
-
         <!-- Reset -->
 
         <button class="reset" id="resetButton">
@@ -104,9 +83,11 @@
 
         <div class="status">
 
-            <div class="status-dot"></div>
+            <div class="status-dot" id="gpsStatus"></div>
 
-            <span>Realtime Firebase</span>
+            <span id="gpsText">
+                Käynnistetään GPS...
+            </span>
 
         </div>
 
