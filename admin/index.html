@@ -12,88 +12,202 @@
 
 </head>
 
+
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <h1>🎣 Appelin FishingHUD</h1>
-        <p class="subtitle">Hallintapaneeli</p>
 
-        <!-- Hauki -->
+    <h1>🎣 Appelin FishingHUD</h1>
 
-        <div class="card pike">
+    <p class="subtitle">
+        Hallintapaneeli
+    </p>
 
-            <h2>🐟 Hauki</h2>
 
-            <div class="controls">
 
-                <button id="pikeMinus">−</button>
+    <!-- ==================================================
+         KIRJAUTUMINEN
+    =================================================== -->
 
-                <span id="pikeCount">0</span>
+    <div class="card login">
 
-                <button id="pikePlus">+</button>
+        <h2>🔐 Kirjautuminen</h2>
 
-            </div>
 
-        </div>
+        <input
+            id="email"
+            type="email"
+            placeholder="Sähköposti"
+        >
 
-        <!-- Kuha -->
 
-        <div class="card zander">
+        <input
+            id="password"
+            type="password"
+            placeholder="Salasana"
+        >
 
-            <h2>🐟 Kuha</h2>
 
-            <div class="controls">
-
-                <button id="zanderMinus">−</button>
-
-                <span id="zanderCount">0</span>
-
-                <button id="zanderPlus">+</button>
-
-            </div>
-
-        </div>
-
-        <!-- Ahven -->
-
-        <div class="card perch">
-
-            <h2>🐟 Ahven</h2>
-
-            <div class="controls">
-
-                <button id="perchMinus">−</button>
-
-                <span id="perchCount">0</span>
-
-                <button id="perchPlus">+</button>
-
-            </div>
-
-        </div>
-
-        <!-- Reset -->
-
-        <button class="reset" id="resetButton">
-            🔄 Nollaa saalis
+        <button id="loginButton">
+            Kirjaudu
         </button>
 
-        <!-- Status -->
 
-        <div class="status">
+        <p id="loginStatus">
+            Ei kirjautunut
+        </p>
 
-            <div class="status-dot" id="gpsStatus"></div>
 
-            <span id="gpsText">
-                Käynnistetään GPS...
+    </div>
+
+
+
+    <!-- ==================================================
+         Hauki
+    =================================================== -->
+
+    <div class="card pike">
+
+        <h2>🐟 Hauki</h2>
+
+
+        <div class="controls">
+
+            <button id="pikeMinus">
+                −
+            </button>
+
+
+            <span id="pikeCount">
+                0
             </span>
+
+
+            <button id="pikePlus">
+                +
+            </button>
+
 
         </div>
 
     </div>
 
-    <script type="module" src="admin.js"></script>
+
+
+
+    <!-- ==================================================
+         Kuha
+    =================================================== -->
+
+    <div class="card zander">
+
+        <h2>🐟 Kuha</h2>
+
+
+        <div class="controls">
+
+
+            <button id="zanderMinus">
+                −
+            </button>
+
+
+            <span id="zanderCount">
+                0
+            </span>
+
+
+            <button id="zanderPlus">
+                +
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- ==================================================
+         Ahven
+    =================================================== -->
+
+    <div class="card perch">
+
+        <h2>🐟 Ahven</h2>
+
+
+        <div class="controls">
+
+
+            <button id="perchMinus">
+                −
+            </button>
+
+
+            <span id="perchCount">
+                0
+            </span>
+
+
+            <button id="perchPlus">
+                +
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- ==================================================
+         Reset
+    =================================================== -->
+
+    <button class="reset" id="resetButton">
+
+        🔄 Nollaa saalis
+
+    </button>
+
+
+
+
+    <!-- ==================================================
+         GPS STATUS
+    =================================================== -->
+
+    <div class="status">
+
+
+        <div
+            class="status-dot"
+            id="gpsStatus">
+        </div>
+
+
+        <span id="gpsText">
+            Käynnistetään GPS...
+        </span>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<script
+    type="module"
+    src="admin.js">
+</script>
+
 
 </body>
 
