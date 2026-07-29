@@ -3,7 +3,7 @@
 // ADMIN.JS
 // ==========================================================
 
-import { db, ref, set, get } from "../shared/firebase.js";
+import { db, ref, set, onValue } from "../shared/firebase.js";
 
 let fish = {
     pike: 0,
@@ -24,44 +24,54 @@ function updateDisplay() {
 }
 
 // ==========================================================
-// Lataa kalat Firebasesta
+// Kuuntele kaloja
 // ==========================================================
 
-async function loadFish() {
+onValue(ref(db, "fish"), (snapshot) => {
 
-    try {
+    if (!snapshot.exists()) return;
 
-        const snapshot = await get(ref(db, "fish"));
+    fish = snapshot.val();
 
-        if (snapshot.exists()) {
-            fish = snapshot.val();
-        }
+    updateDisplay();
 
-        updateDisplay();
-
-    } catch (error) {
-
-        console.error("Virhe ladattaessa kaloja:", error);
-
-    }
-
-}
+});
 
 // ==========================================================
-// Tallenna Firebasean
+// Kuuntele sijaintia
+// ==========================================================
+
+onValue(ref(db, "location"), (snapshot) => {
+
+    if (!snapshot.exists()) return;
+
+    const location = snapshot.val();
+
+    document.getElementById("locationInput").value = location.name ?? "";
+
+});
+
+// ==========================================================
+// Tallenna kalat
 // ==========================================================
 
 async function saveFish() {
 
-    try {
+    await set(ref(db, "fish"), fish);
 
-        await set(ref(db, "fish"), fish);
+}
 
-    } catch (error) {
+// ==========================================================
+// Tallenna sijainti
+// ==========================================================
 
-        console.error("Virhe tallennettaessa kaloja:", error);
+async function saveLocation() {
 
-    }
+    const name = document.getElementById("locationInput").value.trim();
+
+    await set(ref(db, "location"), {
+        name
+    });
 
 }
 
@@ -85,23 +95,21 @@ document.getElementById("pikePlus").onclick = async () => {
 
     fish.pike++;
 
-    updateDisplay();
     await saveFish();
+
     vibrate();
 
 };
 
 document.getElementById("pikeMinus").onclick = async () => {
 
-    if (fish.pike > 0) {
+    if (fish.pike === 0) return;
 
-        fish.pike--;
+    fish.pike--;
 
-        updateDisplay();
-        await saveFish();
-        vibrate();
+    await saveFish();
 
-    }
+    vibrate();
 
 };
 
@@ -113,23 +121,21 @@ document.getElementById("zanderPlus").onclick = async () => {
 
     fish.zander++;
 
-    updateDisplay();
     await saveFish();
+
     vibrate();
 
 };
 
 document.getElementById("zanderMinus").onclick = async () => {
 
-    if (fish.zander > 0) {
+    if (fish.zander === 0) return;
 
-        fish.zander--;
+    fish.zander--;
 
-        updateDisplay();
-        await saveFish();
-        vibrate();
+    await saveFish();
 
-    }
+    vibrate();
 
 };
 
@@ -141,23 +147,33 @@ document.getElementById("perchPlus").onclick = async () => {
 
     fish.perch++;
 
-    updateDisplay();
     await saveFish();
+
     vibrate();
 
 };
 
 document.getElementById("perchMinus").onclick = async () => {
 
-    if (fish.perch > 0) {
+    if (fish.perch === 0) return;
 
-        fish.perch--;
+    fish.perch--;
 
-        updateDisplay();
-        await saveFish();
-        vibrate();
+    await saveFish();
 
-    }
+    vibrate();
+
+};
+
+// ==========================================================
+// Sijainti
+// ==========================================================
+
+document.getElementById("locationSave").onclick = async () => {
+
+    await saveLocation();
+
+    vibrate();
 
 };
 
@@ -167,9 +183,7 @@ document.getElementById("perchMinus").onclick = async () => {
 
 document.getElementById("resetButton").onclick = async () => {
 
-    const ok = confirm("Haluatko varmasti nollata saaliin?");
-
-    if (!ok) return;
+    if (!confirm("Haluatko varmasti nollata saaliin?")) return;
 
     fish = {
         pike: 0,
@@ -177,14 +191,8 @@ document.getElementById("resetButton").onclick = async () => {
         perch: 0
     };
 
-    updateDisplay();
     await saveFish();
+
     vibrate();
 
 };
-
-// ==========================================================
-// Käynnistys
-// ==========================================================
-
-loadFish();

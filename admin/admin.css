@@ -73,21 +73,19 @@ h1{
 }
 
 .card.pike{
-
     border-left-color:#22c55e;
-
 }
 
 .card.zander{
-
     border-left-color:#facc15;
-
 }
 
 .card.perch{
-
     border-left-color:#3b82f6;
+}
 
+.card.location{
+    border-left-color:#ef4444;
 }
 
 .card h2{
@@ -156,6 +154,48 @@ button:active{
 
 }
 
+/* ===========================
+   Sijainti
+=========================== */
+
+.location-controls{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.location-controls input{
+
+    flex:1;
+
+    height:50px;
+
+    border:2px solid #cbd5e1;
+
+    border-radius:10px;
+
+    padding:0 15px;
+
+    font-size:18px;
+
+}
+
+.location-controls button{
+
+    width:120px;
+
+    height:50px;
+
+    font-size:18px;
+
+}
+
+/* ===========================
+   Reset
+=========================== */
+
 .reset{
 
     width:100%;
@@ -173,6 +213,10 @@ button:active{
     background:#dc2626;
 
 }
+
+/* ===========================
+   Status
+=========================== */
 
 .status{
 

@@ -19,7 +19,9 @@
         <h1>🎣 Appelin FishingHUD</h1>
         <p class="subtitle">Hallintapaneeli</p>
 
-        <div class="card">
+        <!-- Hauki -->
+
+        <div class="card pike">
 
             <h2>🐟 Hauki</h2>
 
@@ -35,7 +37,9 @@
 
         </div>
 
-        <div class="card">
+        <!-- Kuha -->
+
+        <div class="card zander">
 
             <h2>🐟 Kuha</h2>
 
@@ -51,7 +55,9 @@
 
         </div>
 
-        <div class="card">
+        <!-- Ahven -->
+
+        <div class="card perch">
 
             <h2>🐟 Ahven</h2>
 
@@ -67,15 +73,40 @@
 
         </div>
 
+        <!-- Sijainti -->
+
+        <div class="card location">
+
+            <h2>📍 Sijainti</h2>
+
+            <div class="location-controls">
+
+                <input
+                    type="text"
+                    id="locationInput"
+                    placeholder="Esim. Airisto">
+
+                <button id="locationSave">
+                    Tallenna
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Reset -->
+
         <button class="reset" id="resetButton">
             🔄 Nollaa saalis
         </button>
+
+        <!-- Status -->
 
         <div class="status">
 
             <div class="status-dot"></div>
 
-            <span>Paikallinen testiversio</span>
+            <span>Realtime Firebase</span>
 
         </div>
 
