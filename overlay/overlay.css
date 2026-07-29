@@ -1,143 +1,168 @@
 /* ==========================================================
-   APPELIN FISHING HUD
-   overlay.css
+   APPELIN FISHINGHUD
+   OVERLAY.CSS
 ========================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
-    background: transparent;
-    padding: 20px;
 
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: #1f2937;
+    margin: 0;
+
+    padding: 0;
+
+    background: transparent;
+
+    font-family: Arial, sans-serif;
+
+    overflow: hidden;
+
 }
 
+
+
 /* ==========================================================
-   HUD
+   PÄÄ HUD
 ========================================================== */
 
 .hud {
 
-    display: flex;
+    display: inline-flex;
+
     align-items: center;
-    gap: 18px;
 
-    width: fit-content;
+    gap: 12px;
 
-    padding: 14px 24px;
+    background: rgba(5, 25, 55, 0.90);
 
-    border-radius: 18px;
+    padding: 8px 18px;
 
-    background: rgba(100,165,235,.72);
+    border-radius: 14px;
 
-    border: 1px solid rgba(55,110,190,.85);
+    border: 1px solid rgba(255,255,255,0.25);
 
-    backdrop-filter: blur(12px);
-
-    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    color: white;
 
     font-size: 18px;
 
-    font-weight: 600;
+    font-weight: 700;
+
+    text-shadow:
+        2px 2px 4px black;
+
+    backdrop-filter: blur(8px);
 
 }
 
+
+
 /* ==========================================================
-   Jokainen tieto
+   HUD OSAT
 ========================================================== */
 
 .hud-item {
 
     display: flex;
+
     align-items: center;
+
     gap: 8px;
 
-    color: #203040;
+    white-space: nowrap;
 
 }
+
+
 
 .icon {
 
-    font-size: 22px;
+    font-size: 24px;
+
+    filter:
+        drop-shadow(2px 2px 2px black);
 
 }
 
+
+
 /* ==========================================================
-   Kalat
+   TEKSTIT
+========================================================== */
+
+#location,
+#weather,
+#clock,
+#viewers {
+
+    color: white;
+
+}
+
+
+
+#viewers {
+
+    font-weight: 800;
+
+}
+
+
+
+/* ==========================================================
+   KALAT
 ========================================================== */
 
 .fish {
 
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    color: white;
 
-    font-weight: 700;
+    font-weight: 800;
 
-}
-
-.pike {
-
-    color: #0f8b3d;
+    text-shadow:
+        2px 2px 4px black;
 
 }
 
-.zander {
 
-    color: #b8860b;
 
-}
-
+.pike,
+.zander,
 .perch {
 
-    color: #0d63d8;
+    color: white;
 
 }
 
+
+
 /* ==========================================================
-   Erotin
+   ERITTIMET
 ========================================================== */
 
 .divider {
 
-    color: rgba(0,0,0,.35);
+    color: white;
+
+    font-weight: bold;
 
 }
 
+
+
 /* ==========================================================
-   Status
+   ONLINE MERKKI
 ========================================================== */
 
 .status {
 
     width: 12px;
+
     height: 12px;
 
     border-radius: 50%;
 
-    margin-left: 6px;
-
-}
-
-.online {
-
     background: #22c55e;
 
-}
-
-/* ==========================================================
-   Hover
-========================================================== */
-
-.hud:hover {
-
-    box-shadow: 0 14px 30px rgba(0,0,0,.40);
-
-    transition: .2s;
+    box-shadow:
+        0 0 8px #22c55e;
 
 }
