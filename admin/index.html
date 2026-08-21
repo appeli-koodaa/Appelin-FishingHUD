@@ -1,214 +1,88 @@
 <!DOCTYPE html>
 <html lang="fi">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Appelin FishingHUD - Admin</title>
-
+    <title>Appelin FishingHUD 2.0.3 - Admin</title>
     <link rel="stylesheet" href="admin.css">
-
 </head>
-
-
 <body>
-
 <div class="container">
-
-
     <h1>🎣 Appelin FishingHUD</h1>
-
-    <p class="subtitle">
-        Hallintapaneeli
-    </p>
-
-
-
-    <!-- ==================================================
-         KIRJAUTUMINEN
-    =================================================== -->
+    <p class="subtitle">Hallintapaneeli <span class="version">2.0.3 TEST</span></p>
 
     <div class="card login">
-
         <h2>🔐 Kirjautuminen</h2>
-
-
-        <input
-            id="email"
-            type="email"
-            placeholder="Sähköposti"
-        >
-
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Salasana"
-        >
-
-
-        <button id="loginButton">
-            Kirjaudu
-        </button>
-
-
-        <p id="loginStatus">
-            Ei kirjautunut
-        </p>
-
-
+        <input id="email" type="email" placeholder="Sähköposti">
+        <input id="password" type="password" placeholder="Salasana">
+        <button id="loginButton">Kirjaudu</button>
+        <p id="loginStatus">Ei kirjautunut</p>
     </div>
-
-
-
-    <!-- ==================================================
-         Hauki
-    =================================================== -->
 
     <div class="card pike">
-
         <h2>🐟 Hauki</h2>
-
-
         <div class="controls">
-
-            <button id="pikeMinus">
-                −
-            </button>
-
-
-            <span id="pikeCount">
-                0
-            </span>
-
-
-            <button id="pikePlus">
-                +
-            </button>
-
-
+            <button id="pikeMinus">−</button>
+            <span id="pikeCount">0</span>
+            <button id="pikePlus">+</button>
         </div>
-
+        <div class="top5-admin">
+            <label class="toggle-row" for="pikeTop5Enabled">
+                <input id="pikeTop5Enabled" type="checkbox">
+                <span>Näytä hauen TOP 5 striimissä</span>
+            </label>
+            <p class="top5-helper" id="pikeTop5Helper">Laita TOP 5 päälle, jotta voit syöttää mitat.</p>
+            <div class="length-grid" data-species="pike"></div>
+            <div class="top5-summary">Yhteismitta: <strong id="pikeTotal">0 cm</strong></div>
+            <button class="save-top5" data-save-species="pike">Tallenna TOP 5</button>
+        </div>
     </div>
-
-
-
-
-    <!-- ==================================================
-         Kuha
-    =================================================== -->
 
     <div class="card zander">
-
         <h2>🐟 Kuha</h2>
-
-
         <div class="controls">
-
-
-            <button id="zanderMinus">
-                −
-            </button>
-
-
-            <span id="zanderCount">
-                0
-            </span>
-
-
-            <button id="zanderPlus">
-                +
-            </button>
-
-
+            <button id="zanderMinus">−</button>
+            <span id="zanderCount">0</span>
+            <button id="zanderPlus">+</button>
         </div>
-
+        <div class="top5-admin">
+            <label class="toggle-row" for="zanderTop5Enabled">
+                <input id="zanderTop5Enabled" type="checkbox">
+                <span>Näytä kuhan TOP 5 striimissä</span>
+            </label>
+            <p class="top5-helper" id="zanderTop5Helper">Laita TOP 5 päälle, jotta voit syöttää mitat.</p>
+            <div class="length-grid" data-species="zander"></div>
+            <div class="top5-summary">Yhteismitta: <strong id="zanderTotal">0 cm</strong></div>
+            <button class="save-top5" data-save-species="zander">Tallenna TOP 5</button>
+        </div>
     </div>
-
-
-
-
-    <!-- ==================================================
-         Ahven
-    =================================================== -->
 
     <div class="card perch">
-
         <h2>🐟 Ahven</h2>
-
-
         <div class="controls">
-
-
-            <button id="perchMinus">
-                −
-            </button>
-
-
-            <span id="perchCount">
-                0
-            </span>
-
-
-            <button id="perchPlus">
-                +
-            </button>
-
-
+            <button id="perchMinus">−</button>
+            <span id="perchCount">0</span>
+            <button id="perchPlus">+</button>
         </div>
-
+        <div class="top5-admin">
+            <label class="toggle-row" for="perchTop5Enabled">
+                <input id="perchTop5Enabled" type="checkbox">
+                <span>Näytä ahvenen TOP 5 striimissä</span>
+            </label>
+            <p class="top5-helper" id="perchTop5Helper">Laita TOP 5 päälle, jotta voit syöttää mitat.</p>
+            <div class="length-grid" data-species="perch"></div>
+            <div class="top5-summary">Yhteismitta: <strong id="perchTotal">0 cm</strong></div>
+            <button class="save-top5" data-save-species="perch">Tallenna TOP 5</button>
+        </div>
     </div>
 
-
-
-
-    <!-- ==================================================
-         Reset
-    =================================================== -->
-
-    <button class="reset" id="resetButton">
-
-        🔄 Nollaa saalis
-
-    </button>
-
-
-
-
-    <!-- ==================================================
-         GPS STATUS
-    =================================================== -->
+    <button class="reset" id="resetButton">🔄 Nollaa saalis</button>
 
     <div class="status">
-
-
-        <div
-            class="status-dot"
-            id="gpsStatus">
-        </div>
-
-
-        <span id="gpsText">
-            Käynnistetään GPS...
-        </span>
-
-
+        <div class="status-dot" id="gpsStatus"></div>
+        <span id="gpsText">Käynnistetään GPS...</span>
     </div>
-
-
-
 </div>
-
-
-
-<script
-    type="module"
-    src="admin.js">
-</script>
-
-
+<script type="module" src="admin.js"></script>
 </body>
-
 </html>

@@ -1,66 +1,36 @@
 <!DOCTYPE html>
 <html lang="fi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appelin FishingHUD</title>
-
+    <title>Appelin FishingHUD 2.0.3</title>
     <link rel="stylesheet" href="overlay.css">
 </head>
-
 <body>
+    <div class="overlay-stack">
+        <section id="top5Rows" class="top5-rows" aria-label="Kalojen TOP 5 -pituudet"></section>
 
-    <header class="hud">
-
-        <div class="hud-item">
-            <span class="icon">📍</span>
-            <span id="location">Lieto</span>
-        </div>
-
-        <div class="hud-item">
-            <span class="icon">🌤️</span>
-    <span id="weather">--°C</span>
-        </div>
-
-<div class="hud-item">
-    <span class="icon">👥</span>
-    <span id="viewers">0</span>
-</div>
-
-        <div class="hud-item">
-            <span class="icon">🕒</span>
-            <span id="clock">00:00</span>
-        </div>
-
-        <div class="hud-item">
-
-            <span class="icon">🎣</span>
-
-            <span class="fish pike">
-                Hauki <span id="pike">0</span>
-            </span>
-
-            <span class="divider">│</span>
-
-            <span class="fish zander">
-                Kuha <span id="zander">0</span>
-            </span>
-
-            <span class="divider">│</span>
-
-            <span class="fish perch">
-                Ahven <span id="perch">0</span>
-            </span>
-
-        </div>
-
-        <div class="status online"></div>
-
-    </header>
-
+        <header class="hud">
+            <div class="hud-item live-item"><span class="status online" title="Online"></span><span>LIVE</span></div>
+            <div class="hud-divider"></div>
+            <div class="hud-item"><span class="icon">📍</span><span id="location">Lieto</span></div>
+            <div class="hud-divider"></div>
+            <div class="hud-item"><span class="icon">🌤️</span><span id="weather">--°C</span></div>
+            <div class="hud-divider"></div>
+            <div class="hud-item"><span class="icon">👥</span><span id="viewers">0</span></div>
+            <div class="hud-divider"></div>
+            <div class="hud-item"><span class="icon">🕒</span><span id="clock">00:00</span></div>
+            <div class="hud-divider"></div>
+            <div class="hud-item fish-group">
+                <span class="icon">🎣</span>
+                <span class="fish">Hauki <strong id="pike">0</strong></span>
+                <span class="fish-separator">|</span>
+                <span class="fish">Kuha <strong id="zander">0</strong></span>
+                <span class="fish-separator">|</span>
+                <span class="fish">Ahven <strong id="perch">0</strong></span>
+            </div>
+        </header>
+    </div>
     <script type="module" src="overlay.js"></script>
-
 </body>
-
 </html>
